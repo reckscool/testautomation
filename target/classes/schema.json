@@ -1,0 +1,94 @@
+{
+	"attributes": [
+		{
+			"name": "AssetClass",
+			"type": "string",
+			"nullable": false,
+			"rule_type": "mvel",
+			"rule": "value == 'FX' || value == 'CO' || value == 'EQ'",
+			"dependencies": []
+		},
+		{
+			"name": "ReportingPartyID",
+			"type": "string",
+			"nullable": false,
+			"rule_type": "mvel",
+			"rule": "value != null",
+			"dependencies": []
+		},
+		{
+			"name": "NonReportingPartyId",
+			"type": "string",
+			"nullable": false,
+			"rule_type": "mvel",
+			"rule": "value != null",
+			"dependencies": []
+		},
+		{
+			"name": "BuyerID",
+			"type": "string",
+			"nullable": true,
+			"rule_type": "mvel",
+			"rule": "value == null || value == ReportingPartyID || value == NonReportingPartyId",
+			"dependencies": [
+				"ReportingPartyID",
+				"NonReportingPartyId"
+			]
+		},
+		{
+			"name": "SellerID",
+			"type": "string",
+			"nullable": true,
+			"rule_type": "mvel",
+			"rule": "value == null || value == ReportingPartyID || value == NonReportingPartyId",
+			"dependencies": [
+				"ReportingPartyID",
+				"NonReportingPartyId"
+			]
+		},
+		{
+			"name": "Leg1PayerID",
+			"type": "string",
+			"nullable": true,
+			"rule_type": "mvel",
+			"rule": "value == null || value == ReportingPartyID || value == NonReportingPartyId",
+			"dependencies": [
+				"ReportingPartyID",
+				"NonReportingPartyId"
+			]
+		},
+		{
+			"name": "Leg2PayerID",
+			"type": "string",
+			"nullable": true,
+			"rule_type": "mvel",
+			"rule": "value == null || value == ReportingPartyID || value == NonReportingPartyId",
+			"dependencies": [
+				"ReportingPartyID",
+				"NonReportingPartyId"
+			]
+		},
+		{
+			"name": "Leg1ReceiverID",
+			"type": "string",
+			"nullable": true,
+			"rule_type": "mvel",
+			"rule": "value == null || value == ReportingPartyID || value == NonReportingPartyId",
+			"dependencies": [
+				"ReportingPartyID",
+				"NonReportingPartyId"
+			]
+		},
+		{
+			"name": "Leg2ReceiverID",
+			"type": "string",
+			"nullable": true,
+			"rule_type": "mvel",
+			"rule": "value == null || value == ReportingPartyID || value == NonReportingPartyId",
+			"dependencies": [
+				"ReportingPartyID",
+				"NonReportingPartyId"
+			]
+		}
+	]
+}

@@ -1,0 +1,85 @@
+{
+  "attributes": [
+    {
+      "name": "AssetClass",
+      "type": "String",
+      "nullable": false,
+      "rule_type": "MVEL",
+      "rule": "value == 'FX' || value == 'CO' || value == 'EQ'",
+      "dependencies": [],
+      "values": ["FX", "CO", "EQ"]
+    },
+    {
+      "name": "ReportingPartyID",
+      "type": "String",
+      "nullable": false,
+      "rule_type": "MVEL",
+      "rule": "value != null && value != ''",
+      "dependencies": [],
+      "values": ["", "RP1", "RP2"]
+    },
+    {
+      "name": "NonReportingPartyId",
+      "type": "String",
+      "nullable": false,
+      "rule_type": "MVEL",
+      "rule": "value != null && value != ''",
+      "dependencies": [],
+      "values":  ["","NP1", "NP2"]
+    },
+    {
+      "name": "BuyerID",
+      "type": "String",
+      "nullable": true,
+      "rule_type": "MVEL",
+      "rule": "value == null || value == ReportingPartyID || value == NonReportingPartyId",
+      "dependencies": ["ReportingPartyID", "NonReportingPartyId"],
+      "values": [null, "RP1", "NP1", "RP2", "NP2"]
+    },
+    {
+      "name": "SellerID",
+      "type": "String",
+      "nullable": true,
+      "rule_type": "MVEL",
+      "rule": "value == null || value == ReportingPartyID || value == NonReportingPartyId",
+      "dependencies": ["ReportingPartyID", "NonReportingPartyId"],
+      "values": ["", "RP1", "NP1", "RP2", "NP2"]
+    },
+    {
+      "name": "Leg1PayerID",
+      "type": "String",
+      "nullable": true,
+      "rule_type": "MVEL",
+      "rule": "(BuyerID == null && SellerID == null) ? (value != null && (value == ReportingPartyID || value == NonReportingPartyId)) : true",
+      "dependencies": ["BuyerID", "SellerID", "ReportingPartyID", "NonReportingPartyId"],
+      "values": ["", "RP1", "NP1", "RP2", "NP2"]
+    },
+    {
+      "name": "Leg2PayerID",
+      "type": "String",
+      "nullable": true,
+      "rule_type": "MVEL",
+      "rule": "(BuyerID == null && SellerID == null) ? (value != null && (value == ReportingPartyID || value == NonReportingPartyId)) : true",
+      "dependencies": ["BuyerID", "SellerID", "ReportingPartyID", "NonReportingPartyId"],
+      "values": ["", "RP1", "NP1", "RP2", "NP2"]
+    },
+    {
+      "name": "Leg1ReceiverID",
+      "type": "String",
+      "nullable": true,
+      "rule_type": "MVEL",
+      "rule": "(BuyerID == null && SellerID == null) ? (value != null && (value == ReportingPartyID || value == NonReportingPartyId)) : true",
+      "dependencies": ["BuyerID", "SellerID", "ReportingPartyID", "NonReportingPartyId"],
+      "values": ["", "RP1", "NP1", "RP2", "NP2"]
+    },
+    {
+      "name": "Leg2ReceiverID",
+      "type": "String",
+      "nullable": true,
+      "rule_type": "MVEL",
+      "rule": "(BuyerID == null && SellerID == null) ? (value != null && (value == ReportingPartyID || value == NonReportingPartyId)) : true",
+      "dependencies": ["BuyerID", "SellerID", "ReportingPartyID", "NonReportingPartyId"],
+      "values": ["", "RP1", "NP1", "RP2", "NP2"]
+    }
+  ]
+}
